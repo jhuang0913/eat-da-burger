@@ -1,8 +1,16 @@
 body {
-    background-color: #ffd700;
+    background: #ffd700;
 }
 
 #burgerPic {
     height: 200px;
     width: 200px;
+}
+
+ul button {
+    margin-left: 20px;
+}
+
+li {
+    list-style: none;
 }
