@@ -9,19 +9,16 @@
         </div>
 
         <div class="panel-body">
-            {{#each result}}
-            {{#if this.devoured}}
+            {{#each result}} {{#if this.devoured}}
             <ul>
                 <div class="list">
                     <li>{{ burger_name }}</li>
                     <form action="/{{this.id}}?_method=PUT" method="POST">
-                    <button class="btn btn-default" type="submit"> DEVOUR IT!</button>
+                        <button class="btn btn-default" type="submit"> DEVOUR IT!</button>
                     </form>
                 </div>
             </ul>
-            {{/if}}
-
-            {{/each}}
+            {{/if}} {{/each}}
 
 
 
@@ -29,10 +26,9 @@
 
             <form action="/add?_method=PUT" method="POST">
 
-                <div class="form-group">
-                    <label for="ca">Burger:</label>
-                    <input type="text" id="ca" name="name">
-                </div>
+
+                <textarea type="text" name="burger_name" cols="20" rows="1"></textarea><br>
+
 
                 <button class="btn btn-default" type="submit">Add Burger</button>
             </form>
@@ -46,15 +42,13 @@
         </div>
 
         <div class="panel-body">
-            {{#each result}}
-            {{#unless this.devoured}}
+            {{#each result}} {{#unless this.devoured}}
             <ul>
-                    <div class="list">
-                        <li>{{burger_name}}</li>
-                    </div>
+                <div class="list">
+                    <li>{{burger_name}}</li>
+                </div>
             </ul>
-            {{/unless}}
-            {{/each}}
+            {{/unless}} {{/each}}
 
         </div>
     </div>
