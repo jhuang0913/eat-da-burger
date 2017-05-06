@@ -15,13 +15,30 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    burgers.create({
-
-    })
+    burgers.create(["burger_name", "devoured", "date"], [req.body.burger_name, req.body.burger_devoured, req.date],
+        function(err, results) {
+            res.redirect('/');
+        });
 });
 
 router.put("/:id", function(req, res) {
+    var condition = "id = " + req.params.id;
 
+    console.log("condition", condition);
+
+    burgers.update({
+        devoured: req.body.devoured
+    }, condition, function() {
+        res.direct("/");
+    });
+});
+
+router.delete("/:id", function(req, res) {
+    var condition = "id = " + req.params.id;
+
+    burgers.delete(condition, function() {
+        res.redirect("/");
+    });
 });
 
 module.exports = router;

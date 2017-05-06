@@ -2,9 +2,11 @@
 
 var express = require('express'),
     methodOverride = require('method-override'),
-    bodyParser = require('body-parser'),
-    port = 3000;
-app = express();
+    bodyParser = require('body-parser');
+
+
+var app = express(),
+    PORT = process.env.PORT || 8080;
 
 app.use(express.static(process.cwd() + "/public"));
 
@@ -21,4 +23,6 @@ var routes = require("./controllers/burgers_controller.js");
 
 app.use("/", routes);
 
-app.listen(port);
+app.listen(PORT, function() {
+    console.log("App is listening on port: " + PORT);
+});

@@ -1,2 +1,37 @@
-<h1>Eat-Da-Burger!</h1>
+<div class="container-fluid">
+    <div class="container text-center">
+        <img id="burgerPic" src="../assets/img/burger.jpg" alt="burger" />
+        <h1>Eat-Da-Burger!</h1>
 
+
+
+        <ul>
+            {{#each burgers }}
+            <li>
+                {{ this.name }}
+
+                <form action="/{{ this.id }}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button type="submit"> DEVOUR IT!</button>
+                </form>
+
+                {{>burgers/delete-burger_name}}
+            </li>
+            {{each}}
+        </ul>
+
+
+	<h2>Add a burger</h2>
+
+	<form class="create-update-form" action="/" method="POST">
+
+	  <div class="form-group">
+	    <label for="ca">Burger Name:</label>
+	    <input type="text" id="ca" name="name">
+	  </div>
+	  
+	  <button type="submit">Add Burger</button>
+	</form>
+
+        </div>
+        </div>

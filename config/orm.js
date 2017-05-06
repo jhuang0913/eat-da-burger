@@ -1,6 +1,31 @@
 //import MYSQL connection
 var connection = require("../config/connection.js");
 
+// Helper function for SQL syntax.
+function printQuestionMarks(num) {
+    var arr = [];
+
+    for (var i = 0; i < num; i++) {
+        arr.push("?");
+    }
+
+    return arr.toString();
+}
+
+// Helper function for SQL syntax.
+function objToSql(ob) {
+    var arr = [];
+
+    for (var key in ob) {
+        if (Object.hasOwnProperty.call(ob, key)) {
+            arr.push(key + "=" + ob[key]);
+        }
+    }
+
+    return arr.toString();
+}
+
+
 //select all 
 var orm = {
     all: function(tableInput, cb) {
@@ -10,12 +35,12 @@ var orm = {
                 throw err;
             }
             cb(result);
-        })
+        });
     },
 
     //insert
-    create: function(table, cols, vals, cb) {
-        var queryString = "INSERT INTO " + table;
+    create: function(tableInput, cols, vals, cb) {
+        var queryString = "INSERT INTO " + tableInput;
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
